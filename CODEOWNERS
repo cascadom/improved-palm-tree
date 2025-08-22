@@ -1,0 +1,5 @@
+# Protect the entire repository
+* @cascadom
+
+# Protect the CODEOWNERS file itself
+/.github/CODEOWNERS @cascadom
