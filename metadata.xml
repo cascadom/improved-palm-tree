@@ -54,7 +54,7 @@
 					</Dependent>
 				</ReferentialConstraint>
 			</Association>
-			<EntityContainer m:IsDefaultEntityContainer="true">
+			<EntityContainer>
 				<EntitySet Name="jobs" EntityType="fioriocr.job" />
 				<EntitySet Name="headers" EntityType="fioriocr.item" />
 				<EntitySet Name="lines" EntityType="fioriocr.mainitem" />
@@ -68,6 +68,6 @@
 					<End EntitySet="fields" />
 				</AssociationSet>
 			</EntityContainer>
-		</Schema>
-	</edmx:DataServices>
+			</Schema>
+		</edmx:DataServices>
 </edmx:Edmx>
