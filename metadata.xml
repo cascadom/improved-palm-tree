@@ -54,7 +54,7 @@
 					</Dependent>
 				</ReferentialConstraint>
 			</Association>
-			<EntityContainer>
+			<EntityContainer m:IsDefaultEntityContainer="true">
 				<EntitySet Name="jobs" EntityType="fioriocr.job" />
 				<EntitySet Name="headers" EntityType="fioriocr.item" />
 				<EntitySet Name="lines" EntityType="fioriocr.mainitem" />
