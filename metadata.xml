@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" Version="1.0">
+<edmx:Edmx xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" Version="1.0">
 	<edmx:DataServices m:DataServiceVersion="2.0">
-		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="fioriocr" xml:lang="en">
+		<Schema Namespace="fioriocr" xml:lang="en">
 			<EntityType Name="job">
 				<Key>
 					<PropertyRef Name="id" />
