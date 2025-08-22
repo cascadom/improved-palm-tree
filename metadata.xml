@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" Version="1.0">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="fioriocr" xml:lang="en">
+			<EntityType Name="job">
+				<Key>
+					<PropertyRef Name="id" />
+				</Key>
+				<Property Name="id" Type="Edm.String" />
+				<Property Name="filename" Type="Edm.String" />
+				<Property Name="status" Type="Edm.String" />
+				<NavigationProperty Name="headers" Relationship="fioriocr.job_header" ToRole="job_header_to" />
+			</EntityType>
+			<EntityType Name="item">
+				<Key>
+					<PropertyRef Name="name" />
+				</Key>
+				<Property Name="name" Type="Edm.String" />
+				<Property Name="category" Type="Edm.String" />
+				<Property Name="value" Type="Edm.String" />
+				<Property Name="rawValue" Type="Edm.String" />
+				<Property Name="page" Type="Edm.String" />
+				<Property Name="confidence" Type="Edm.String" />
+				<Property Name="label" Type="Edm.String" />
+				<Property Name="description" Type="Edm.String" />
+			</EntityType>
+			<EntityType Name="mainitem">
+				<Key>
+					<PropertyRef Name="index" />
+				</Key>
+				<NavigationProperty Name="fields" Relationship="fioriocr.mainitem_field" ToRole="mainitem_field_to" />
+			</EntityType>
+			<Association Name="job_header">
+				<End Type="job" Multiplicity="1" Role="job_header_from" />
+				<End Type="item" Multiplicity="*" Role="job_header_to" />
+				<ReferentialConstraint>
+					<Principal Role="job_header_from">
+						<PropertyRef Name="id" />
+					</Principal>
+					<Dependent Role="job_header_to">
+						<PropertyRef Name="id" />
+					</Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="mainitem_field">
+				<End Type="fioriocr.mainitem" Multiplicity="1" Role="mainitem_field_from" />
+				<End Type="fioriocr.item" Multiplicity="*" Role="mainitem_field_to" />
+				<ReferentialConstraint>
+					<Principal Role="mainitem_field_from">
+						<PropertyRef Name="index" />
+					</Principal>
+					<Dependent Role="mainitem_field_to">
+						<PropertyRef Name="name" />
+					</Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<EntityContainer m:IsDefaultEntityContainer="true">
+				<EntitySet Name="jobs" EntityType="fioriocr.job" />
+				<EntitySet Name="headers" EntityType="fioriocr.item" />
+				<EntitySet Name="lines" EntityType="fioriocr.mainitem" />
+				<EntitySet Name="fields" EntityType="fioriocr.item" />
+				<AssociationSet Name="job_headers" Association="fioriocr.job_header">
+					<End EntitySet="jobs" />
+					<End EntitySet="headers" />
+				</AssociationSet>
+				<AssociationSet Name="mainitem_fields" Association="fioriocr.mainitem_field">
+					<End EntitySet="lines" />
+					<End EntitySet="fields" />
+				</AssociationSet>
+			</EntityContainer>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>
